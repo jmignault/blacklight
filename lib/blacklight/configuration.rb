@@ -293,9 +293,9 @@ module Blacklight
     # including default values from the index configuration
     def view_config(view_type)
       if view_type == :show
-        self.index.merge self.show
+        index.merge show
       else
-        self.index.merge view.fetch(view_type, {})
+        index.merge view.fetch(view_type, {})
       end
     end
 

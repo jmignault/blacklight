@@ -2,18 +2,18 @@
 module Blacklight
   class Configuration::FacetField < Blacklight::Configuration::Field
     def normalize! blacklight_config = nil
-      self.query.stringify_keys! if self.query
+      query.stringify_keys! if query
 
-      self.collapse = true if self.collapse.nil?
-      self.show = true if self.show.nil?
-      self.if = self.show if self.if.nil?
-      self.index_range = 'A'..'Z' if self.index_range == true
+      self.collapse = true if collapse.nil?
+      self.show = true if show.nil?
+      self.if = show if self.if.nil?
+      self.index_range = 'A'..'Z' if index_range == true
 
       super
       
-      if self.single && self.tag.blank? && self.ex.blank?
-        self.tag = "#{self.key}_single"
-        self.ex = "#{self.key}_single"
+      if single && tag.blank? && ex.blank?
+        self.tag = "#{key}_single"
+        self.ex = "#{key}_single"
       end
 
       self
